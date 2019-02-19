@@ -1,0 +1,125 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "qmake",
+            "type": "shell",
+            "command": "qmake",
+            "args": [
+                "test.pro",
+                "-r",
+                "-spec",
+                "win32-g++",
+                "CONFIG+=debug",
+                "CONFIG+=qml_debug"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}",
+                "env": {
+                    "PATH": "C:/Qt/Qt5.6.0/5.6/mingw49_32/bin"
+                }
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "mingw32-make",
+            "options": {
+                "cwd": "${workspaceRoot}",
+                "env": {
+                    "PATH": "C:/Qt/Qt5.6.0/5.6/mingw49_32/bin;C:/Qt/Qt5.6.0/Tools/mingw492_32/bin",
+                    "INCLUDE": "C:/Qt/Qt5.6.0/5.6/mingw49_32/include;C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore;",
+                    "LIBPATH": "C:/Qt/Qt5.6.0/5.6/mingw49_32/lib"
+                }
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error) (\\w*:\\s+.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4
+                }
+            }
+        },
+        {
+            "label": "deploy",
+            "type": "shell",
+            "command": "windeployqt",
+            "args": [
+                "test.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/debug",
+                "env": {
+                    "PATH": "C:/Qt/Qt5.6.0/5.6/mingw49_32/bin;C:/Qt/Qt5.6.0/Tools/mingw492_32/bin",
+                    "INCLUDE": "C:/Qt/Qt5.6.0/5.6/mingw49_32/include;C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore;",
+                    "LIBPATH": "C:/Qt/Qt5.6.0/5.6/mingw49_32/lib"
+                }
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*)\\((\\d+)\\):\\s+(warning|error) (\\w*:\\s+.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "severity": 3,
+                    "message": 4
+                }
+            }
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "mingw32-make",
+            "args": [
+                "clean"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}",
+                "env": {
+                    "PATH": "C:/Qt/Qt5.6.0/5.6/mingw49_32/bin;C:/Qt/Qt5.6.0/Tools/mingw492_32/bin"
+                }
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+            "group": "build",
+            "label": "Clean&Build&Deploy",
+            "dependsOn": [
+                "clean",
+                "qmake",
+                "build"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

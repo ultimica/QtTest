@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "QT",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Qt/Qt5.6.0/5.6/mingw49_32/include",
+                "C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtCore",
+                "C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtGui",
+                "C:/Qt/Qt5.6.0/5.6/mingw49_32/include/QtWidgets"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:/Qt/Qt5.6.0/Tools/mingw492_32/bin/mingw32-make.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
